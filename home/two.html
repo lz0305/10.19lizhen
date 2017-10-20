@@ -11,7 +11,7 @@
             margin: 0 auto;
         }
         #text{
-            font-size:20px; color:#F00
+            font-size:20px;
         }
         [type="submit"]{
             width: 80px;
@@ -23,26 +23,15 @@
 </head>
 <body>
 <div ng-app="app" ng-controller="myCtrl">
-    <form action="success.html" name="myForm">
-        <textarea ng-model="carname" ng-value="carname" ng-change="chan()" id="text" required></textarea><br>
-        <input type="submit" ng-disabled="{{a}}">
-        <h1>{{carname}}</h1>
+    <form action="success.html" name="table">
+        <textarea ng-model="carname" ng-maxlength="60" required></textarea><br>
+        <input type="submit" ng-disabled="!table.$valid">
     </form>
 </div>
 <script>
     var app = angular.module("app", []);
     app.controller('myCtrl', function($scope) {
-        $scope.a =true;
         $scope.carname = "";
-        $scope.chan=function () {
-            console.log($scope.carname.length);
-            if($scope.carname.length>60){
-                $scope.a =true;
-                console.log($scope.a)
-            }else {
-                $scope.a =false;
-            }
-        }
     });
 </script>
 </body>
